@@ -1,3 +1,3 @@
 export default function Kontakt() {
-  return <>Kontakt os</>;
+  return <div className="">Kontakt os</div>;
 }

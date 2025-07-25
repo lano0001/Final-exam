@@ -1,3 +1,6 @@
+// Components
+import Header from "./src/components/Header/Header";
+
 import {
   isRouteErrorResponse,
   Links,
@@ -32,8 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="">
+        <Header />
+        {/* Global margin */}
+        <div> {children}</div>
+
         <ScrollRestoration />
         <Scripts />
       </body>

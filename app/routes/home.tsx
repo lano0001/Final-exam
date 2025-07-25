@@ -1,12 +1,20 @@
 import type { Route } from "./+types/home";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+// Components
+import IntroSection from "~/src/components/IntroSection/IntroSection";
+import InfoSection from "~/src/components/InfoSection/InfoSection";
+import ProcessSection from "~/src/components/ProcessSection/ProcessSection";
+import CommentsSection from "~/src/components/CommentSection/CommentsSection";
+import ContactUsSection from "~/src/components/ContactUsSection/ContactUsSection";
 
 export default function Home() {
-  return <>hey</>;
+  return (
+    <div>
+      <IntroSection />
+      <InfoSection />
+      <CommentsSection />
+      <ContactUsSection />
+      <ProcessSection />
+    </div>
+  );
 }
