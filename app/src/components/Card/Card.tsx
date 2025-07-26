@@ -8,7 +8,7 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ text, icon }) => {
   return (
-    <div className="bg-stone-900 flex flex-col md:flex-row items-center justify-around text-white p-4 gap-4 h-32">
+    <div className="bg-primary-black shadow-lg shadow-primary-black rounded-lg flex flex-col md:flex-row items-center justify-around text-white p-4 gap-4 h-32">
       <img src={icon} alt="" className="h-7 w-7 md:h-auto md:w-auto" />
       <span className="text-xs sm:text-lg">{text}</span>
     </div>

@@ -69,13 +69,13 @@ export default function ProcessSection() {
         {steps.map(({ id, text }, idx) => (
           <div
             key={id}
-            className={`transform bg-stone-900 text-white p-6 rounded-lg flex flex-col justify-around h-full transition-transform duration-900 ease-out ${
+            className={`transform bg-primary-black shadow-lg shadow-primary-black  text-white p-6 rounded-lg flex flex-col justify-around h-full transition-transform duration-900 ease-out ${
               animated[idx] ? "scale-100 opacity-100" : "scale-0 opacity-0"
             }`}
           >
             <p className="mb-4">{text}</p>
             <div className="flex justify-center">
-              <span className="bg-green-700 text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">
+              <span className="bg-accent-green text-white w-8 h-8 rounded-full flex items-center justify-center font-medium">
                 {id}
               </span>
             </div>

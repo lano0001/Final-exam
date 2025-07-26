@@ -81,12 +81,12 @@ export default function CommentsCarousel() {
   }, [slides.length]);
 
   return (
-    <div className="relative bg-stone-900 py-8">
+    <div className="relative bg-primary-black py-8">
       {/* Prev arrow */}
       <button
         onClick={prev}
         disabled={currentIdx === 0}
-        className="absolute left-1 md:left-4 top-1/2 z-50 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
+        className="absolute left-1 md:left-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
         aria-label="Previous"
       >
         ‹
@@ -124,7 +124,7 @@ export default function CommentsCarousel() {
       <button
         onClick={next}
         disabled={currentIdx >= slides.length - 1}
-        className="absolute right-1 md:right-4 top-1/2 z-50 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
+        className="absolute right-1 md:right-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
         aria-label="Next"
       >
         ›

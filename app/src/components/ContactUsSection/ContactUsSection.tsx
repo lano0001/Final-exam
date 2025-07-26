@@ -7,7 +7,7 @@ export default function ContactUsSection() {
       style={{ backgroundImage: `url('/images/plants.webp')` }}
     >
       <div className="relative flex flex-col items-center justify-center text-center text-white px-4 py-20 md:py-32 lg:py-40">
-        <div className="bg-stone-900 opacity-95 p-8">
+        <div className="bg-primary-black opacity-95 p-8">
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
             Skal vi tage en snak om dine ønsker?
           </h1>
@@ -16,7 +16,7 @@ export default function ContactUsSection() {
           </p>
           <button
             type="button"
-            className="bg-green-700 transition-colors text-white font-semibold px-6 py-3 rounded-md cursor-pointer"
+            className="bg-accent-green transition-colors text-white font-semibold px-6 py-3 rounded-md cursor-pointer"
           >
             Kontakt os i dag
           </button>

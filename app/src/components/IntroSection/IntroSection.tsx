@@ -22,7 +22,7 @@ export default function IntroSection() {
             raftehegn, FT Systemhegn eller komposithegn? Kontakt os i dag og få
             et uforpligtende tilbud eller se vores pakkeløsninger.
           </p>
-          <button className="inline-block bg-accent-green bg-green-700 transition-colors text-white font-semibold px-6 py-3 rounded-md">
+          <button className="inline-block bg-accent-green  transition-colors text-white font-semibold px-6 py-3 rounded-md">
             Kontakt os i dag
           </button>
         </div>

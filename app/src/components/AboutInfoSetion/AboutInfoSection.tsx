@@ -26,7 +26,7 @@ const AboutInfoSection: FC = () => {
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div>
           <h2 className="text-3xl font-bold mb-4">Hvem er vi?</h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-primary-black mb-6">
             Vores navn siger det hele. Vi er eksperter i hegn og dedikeret til
             at levere solide, æstetiske og holdbare hegnsløsninger til alle
             typer ejendomme.
@@ -43,7 +43,7 @@ const AboutInfoSection: FC = () => {
           {cards.map(({ title, text }) => (
             <div
               key={title}
-              className="bg-stone-900 text-white p-6 rounded-lg shadow-lg"
+              className="bg-primary-black text-white p-6 rounded-lg shadow-lg shadow-primary-black"
             >
               <h3 className="text-xl font-semibold mb-2">{title}</h3>
               <p className="text-gray-200 text-sm">{text}</p>

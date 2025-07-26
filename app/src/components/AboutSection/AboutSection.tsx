@@ -1,9 +1,9 @@
 import type { FC } from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 const AboutSection: FC = () => {
   return (
-    <section className="bg-stone-900 text-white">
+    <section className="bg-primary-black text-white">
       <div className="container mx-auto px-4 py-12 flex flex-col-reverse md:flex-row items-center gap-8">
         <div className="w-full md:w-1/2">
           <h2 className="text-2xl md:text-4xl font-bold mb-4">
@@ -14,12 +14,12 @@ const AboutSection: FC = () => {
             raftehegn, FT Systemhegn eller komposithegn? Kontakt os i dag og få
             et uforpligtende tilbud eller se vores pakkeløsninger.
           </p>
-          <Link
+          <NavLink
             to="/kontakt"
-            className="inline-block bg-green-700 transition-colors text-white font-semibold px-6 py-3 rounded-md"
+            className="inline-block bg-accent-green transition-colors text-white font-semibold px-6 py-3 rounded-md"
           >
             Kontakt os i dag
-          </Link>
+          </NavLink>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ const SatisfactionSection: FC = () => (
   <section className="bg-white py-12">
     <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div className="relative">
-        <div className="absolute bg-green-700 h-full w-full top-2 right-2 rounded-lg "></div>
+        <div className="absolute bg-accent-green h-full w-full top-2 right-2 rounded-lg "></div>
         <img
           src="/images/omosimg.webp"
           alt="Fence and keys"

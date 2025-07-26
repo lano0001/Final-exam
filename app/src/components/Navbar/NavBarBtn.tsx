@@ -9,7 +9,7 @@ const NavBarBtn: FC<NavBarBtnProps> = ({ menuOpen, handleOnOpen }) => {
   return (
     <button
       onClick={handleOnOpen}
-      className="lg:hidden focus:outline-none fixed right-3 z-40"
+      className="lg:hidden focus:outline-none absolute right-3 z-40"
       aria-label="Toggle menu"
     >
       {menuOpen ? (
