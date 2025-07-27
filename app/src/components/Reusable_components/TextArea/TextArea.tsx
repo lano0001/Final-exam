@@ -3,7 +3,6 @@ interface TextAreaProps {
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  error?: boolean;
 }
 
 const TextArea: React.FC<TextAreaProps> = ({
@@ -11,7 +10,6 @@ const TextArea: React.FC<TextAreaProps> = ({
   placeholder,
   value,
   onChange,
-  error = false,
 }) => {
   return (
     <textarea
@@ -19,9 +17,7 @@ const TextArea: React.FC<TextAreaProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={`p-1  w-full h-24 resize-none bg-white text-black focus:outline-none ${
-        error ? "border border-red-500" : ""
-      }`}
+      className={`p-1  w-full h-24 resize-none bg-white text-black focus:outline-none`}
     ></textarea>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { supabase } from "../../lib/supabaseClient";
 
 // Components
 import TextInput from "../Reusable_components/TextInput/TextInput";
@@ -12,12 +13,12 @@ type FormData = {
   telefon: string;
   hegnstype: string;
   emne: string;
-  længde: string;
-  højde: string;
-  antalHjørner: string;
+  laengde: string;
+  hoejde: string;
+  antalHjorner: string;
   antalEnder: string;
-  antalLåger: string;
-  bemærkning: string;
+  antalLaager: string;
+  bemarkning: string;
 };
 
 export default function GetOfferForm() {
@@ -32,12 +33,12 @@ export default function GetOfferForm() {
     telefon: "",
     hegnstype: "",
     emne: "",
-    længde: "",
-    højde: "",
-    antalHjørner: "",
+    laengde: "",
+    hoejde: "",
+    antalHjorner: "",
     antalEnder: "",
-    antalLåger: "",
-    bemærkning: "",
+    antalLaager: "",
+    bemarkning: "",
   });
 
   const handleChange = (
@@ -46,7 +47,8 @@ export default function GetOfferForm() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Handles validation
@@ -66,9 +68,54 @@ export default function GetOfferForm() {
       return;
     }
 
-    console.log("Submitted data:", formData);
-    // TODO: Send to API
+    const { error } = await supabase.from("quotes").insert([
+      {
+        navn: formData.navn,
+        email: formData.email,
+        adresse: formData.adresse,
+        postnr: formData.postnr,
+        telefon: formData.telefon,
+        hegnstype: formData.hegnstype,
+        emne: formData.emne,
+        laengde_m: formData.laengde,
+        hoejde_cm: formData.hoejde,
+        antal_hjorner: parseInt(formData.antalHjorner),
+        antal_ender: parseInt(formData.antalEnder),
+        antal_laager: formData.antalLaager
+          ? parseInt(formData.antalLaager)
+          : null,
+        bemarkning: formData.bemarkning,
+      },
+    ]);
+
+    // Error Message
+    if (error) {
+      console.error("Supabase insert error:", error.message);
+      alert("Der opstod en fejl. Prøv igen.");
+      return;
+    }
+
+    alert("Tak! Dit tilbud er sendt.");
+
+    // Resets form
+    setFormData({
+      navn: "",
+      email: "",
+      adresse: "",
+      postnr: "",
+      telefon: "",
+      hegnstype: "",
+      emne: "",
+      laengde: "",
+      hoejde: "",
+      antalHjorner: "",
+      antalEnder: "",
+      antalLaager: "",
+      bemarkning: "",
+    });
+    setErrors({});
   };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-around px-4 py-8 ">
       <h1 className="text-3xl font-semibold my-10">Få et tilbud</h1>
@@ -132,25 +179,25 @@ export default function GetOfferForm() {
             error={errors.emne}
           />
           <TextInput
-            name="længde"
-            placeholder="Længde i meter"
-            value={formData.længde}
+            name="laengde"
+            placeholder="laengde i meter"
+            value={formData.laengde}
             onChange={handleChange}
-            error={errors.længde}
+            error={errors.laengde}
           />
           <TextInput
-            name="højde"
-            placeholder="Højde i cm."
-            value={formData.højde}
+            name="hoejde"
+            placeholder="Hoejde i cm."
+            value={formData.hoejde}
             onChange={handleChange}
-            error={errors.højde}
+            error={errors.hoejde}
           />
           <TextInput
-            name="antalHjørner"
+            name="antalHjorner"
             placeholder="Antal hjørner"
-            value={formData.antalHjørner}
+            value={formData.antalHjorner}
             onChange={handleChange}
-            error={errors.antalHjørner}
+            error={errors.antalHjorner}
           />
           <TextInput
             name="antalEnder"
@@ -160,21 +207,20 @@ export default function GetOfferForm() {
             error={errors.antalEnder}
           />
           <TextInput
-            name="antalLåger"
+            name="antalLaager"
             placeholder="Evt antal låger"
-            value={formData.antalLåger}
+            value={formData.antalLaager}
             onChange={handleChange}
-            error={errors.antalLåger}
+            error={errors.antalLaager}
           />
         </div>
 
         <div className="mt-4">
           <TextArea
-            name="bemærkning"
-            placeholder="Bemærkning"
-            value={formData.bemærkning}
+            name="bemarkning"
+            placeholder="Bemarkning"
+            value={formData.bemarkning}
             onChange={handleChange}
-            error={errors.bemærkning}
           />
         </div>
 

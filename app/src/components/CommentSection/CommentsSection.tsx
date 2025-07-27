@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { supabase } from "../../lib/supabaseClient";
 
 interface Comment {
   id: number;
   author: string;
   role: string;
   text: string;
+  created_at?: string;
 }
 
 // Hook for media queries
@@ -21,47 +23,33 @@ function useMediaQuery(query: string): boolean {
 }
 
 export default function CommentsCarousel() {
-  // static comments array (stable identity)
-  const comments = useMemo<Comment[]>(
-    () => [
-      {
-        id: 1,
-        author: "Jan Glerup",
-        role: "Kunde",
-        text: "Jeg kan varmt anbefale HegnXperten. Stefan leverer fremragende håndværk...",
-      },
-      {
-        id: 2,
-        author: "Maria Hansen",
-        role: "Hus ejer",
-        text: "HegnXperten skabte præcis det hegn, jeg ønskede. Kvaliteten er i top...",
-      },
-      {
-        id: 3,
-        author: "Peter Sørensen",
-        role: "Have entusiast",
-        text: "Professionel service fra start til slut. Montering gik hurtigt...",
-      },
-      {
-        id: 4,
-        author: "Louise Nielsen",
-        role: "Bolig køber",
-        text: "Fantastisk rådgivning og flot udført arbejde. Mit nye hegn passer...",
-      },
-      {
-        id: 5,
-        author: "Anders Kristensen",
-        role: "Erhvervskunde",
-        text: "Vi fik sat hegn op omkring vores erhvervsejendom uden problemer...",
-      },
-    ],
-    []
-  );
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const perSlide = isDesktop ? 2 : 1;
 
-  // memoized slides
+  // Fetch data
+  useEffect(() => {
+    const fetchComments = async () => {
+      const { data, error } = await supabase
+        .from("comments")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching comments:", error.message);
+      } else {
+        setComments(data || []);
+      }
+
+      setLoading(false);
+    };
+
+    fetchComments();
+  }, []);
+
+  // Group into slides
   const slides = useMemo(() => {
     const chunks: Comment[][] = [];
     for (let i = 0; i < comments.length; i += perSlide) {
@@ -80,9 +68,17 @@ export default function CommentsCarousel() {
     setCurrentIdx((i) => (i + 1 < slides.length ? i + 1 : i));
   }, [slides.length]);
 
+  if (loading) {
+    return (
+      <div className="bg-primary-black text-white py-8 text-center">
+        Indlæser kommentarer...
+      </div>
+    );
+  }
+
   return (
     <div className="relative bg-primary-black py-8">
-      {/* Prev arrow */}
+      {/* tilbage */}
       <button
         onClick={prev}
         disabled={currentIdx === 0}
@@ -92,7 +88,6 @@ export default function CommentsCarousel() {
         ‹
       </button>
 
-      {/* Carousel */}
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -120,7 +115,7 @@ export default function CommentsCarousel() {
         </div>
       </div>
 
-      {/* Next arrow */}
+      {/* frem */}
       <button
         onClick={next}
         disabled={currentIdx >= slides.length - 1}
