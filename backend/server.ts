@@ -60,3 +60,7 @@ app.listen(PORT, () => {
 console.log("Mailchimp Key:", process.env.MAILCHIMP_API_KEY);
 console.log("Audience ID:", process.env.MAILCHIMP_AUDIENCE_ID);
 console.log("he");
+
+app.get("/", (req, res) => {
+  res.send("Server is running 🚀");
+});
