@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import type { Route } from "./+types/root";
+import type { Route } from "../.react-router/types/frontend/app/+types/root";
 import "./app.css";
 import "./src/assets/fonts/fonts.css";
 

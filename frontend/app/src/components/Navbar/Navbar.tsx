@@ -39,6 +39,7 @@ export default function NavBar() {
               <li className="flex gap-5">
                 {navItems.map(({ to, label }) => (
                   <NavLink
+                    key={to}
                     to={to}
                     end
                     className={({ isActive }: NavLinkState) =>
@@ -77,6 +78,7 @@ export default function NavBar() {
           <li>
             {navItems.map(({ to, label }) => (
               <NavLink
+                key={to}
                 to={to}
                 end
                 onClick={() => setMenuOpen(false)}

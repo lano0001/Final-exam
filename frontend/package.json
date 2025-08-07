@@ -6,21 +6,31 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "build:server": "tsc --project tsconfig.server.json",
+    "start:server": "node dist-server/server.js",
+    "dev:server": "npm run build:server && npm run start:server"
   },
   "dependencies": {
     "@react-router/node": "^7.7.0",
     "@react-router/serve": "^7.7.0",
     "@supabase/supabase-js": "^2.52.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
     "isbot": "^5.1.27",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "react-router": "^7.7.0"
+    "react-router": "^7.7.0",
+    "resend": "^6.0.0",
+    "undici": "^6.21.3"
   },
   "devDependencies": {
     "@react-router/dev": "^7.7.0",
     "@tailwindcss/vite": "^4.1.4",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",

@@ -4,7 +4,7 @@ export default function GetOfferSection() {
   return (
     <section className="bg-primary-black text-white h-80 px-6 py-4">
       <div className="w-full md:w-1/2 h-full flex flex-col justify-around">
-        <h2 className="text-xl md:text-2xl font-semibold">
+        <h2 className="text-xl md:text-4xl font-semibold">
           Indhent et konkurrencedygtigt tilbud og gør dine hegnvisioner til
           virkelighed!
         </h2>
