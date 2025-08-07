@@ -5,4 +5,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  build: {
+    outDir: "dist", // this tells Vite where to put the built files
+  },
+  base: "/", // ensures routes work when deployed
 });

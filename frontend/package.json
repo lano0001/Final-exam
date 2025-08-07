@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "react-router dev",
+    "build": "react-router build",
+    "start": "react-router-serve .react-router/server/index.js",
     "postinstall": "npm rebuild esbuild && npm rebuild vite",
     "typecheck": "react-router typegen && tsc",
     "build:server": "tsc --project tsconfig.server.json",
