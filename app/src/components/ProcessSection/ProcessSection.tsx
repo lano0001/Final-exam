@@ -56,7 +56,7 @@ export default function ProcessSection() {
 
   return (
     <section ref={sectionRef} className="container mx-auto px-4 py-12">
-      <h2 className="text-center text-3xl font-bold mb-4">
+      <h2 className="text-center text-3xl lg:text-5xl font-bold mb-4">
         Hvordan virker det?
       </h2>
       <p className="text-center text-gray-700 max-w-2xl mx-auto mb-6">

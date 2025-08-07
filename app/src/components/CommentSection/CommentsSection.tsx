@@ -1,5 +1,10 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+
+// Data
 import { supabase } from "../../lib/supabaseClient";
+
+// Icons
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 interface Comment {
   id: number;
@@ -82,10 +87,10 @@ export default function CommentsCarousel() {
       <button
         onClick={prev}
         disabled={currentIdx === 0}
-        className="absolute left-1 md:left-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
+        className="absolute cursor-pointer left-1 md:left-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
         aria-label="Previous"
       >
-        ‹
+        <FaAngleLeft />
       </button>
 
       <div className="overflow-hidden">
@@ -105,8 +110,8 @@ export default function CommentsCarousel() {
                 >
                   <p className="mb-4">{c.text}</p>
                   <div className="text-right">
-                    <div className="font-semibold">{c.author}</div>
-                    <div className="text-sm text-gray-500">{c.role}</div>
+                    <h2 className="font-semibold">{c.author}</h2>
+                    <h3 className="text-sm text-gray-500">{c.role}</h3>
                   </div>
                 </div>
               ))}
@@ -119,10 +124,10 @@ export default function CommentsCarousel() {
       <button
         onClick={next}
         disabled={currentIdx >= slides.length - 1}
-        className="absolute right-1 md:right-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
+        className="absolute cursor-pointer right-1 md:right-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
         aria-label="Next"
       >
-        ›
+        <FaAngleRight />
       </button>
     </div>
   );

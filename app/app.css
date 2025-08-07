@@ -10,4 +10,11 @@
 
 html,
 body {
+  font-family: "Raleway";
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Oswald";
 }

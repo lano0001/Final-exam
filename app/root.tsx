@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import "./src/assets/fonts/fonts.css";
 
 // Components
 import Header from "./src/components/Header/Header";
@@ -33,8 +34,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
+        <meta
+          name="description"
+          content="HegnXperten - Professionelle hegnsløsninger i Danmark. Kontakt os i dag for et uforpligtende tilbud."
+        />
         <Links />
+        <title>HegnXperten</title>
       </head>
       <body className="">
         <Header />

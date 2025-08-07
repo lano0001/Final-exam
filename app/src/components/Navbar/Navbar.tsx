@@ -9,11 +9,11 @@ interface NavLinkState {
 }
 
 const navItems = [
-  { to: "/about", label: "Hegnstyper" },
-  { to: "/about", label: "Rydning" },
-  { to: "/about", label: "Hegnsloven" },
+  // { to: "/about", label: "Hegnstyper" },
+  // { to: "/about", label: "Rydning" },
+  // { to: "/about", label: "Hegnsloven" },
   { to: "/about", label: "Om os" },
-  { to: "/about", label: "Kontakt os" },
+  // { to: "/about", label: "Kontakt os" },
 ];
 
 export default function NavBar() {
@@ -23,7 +23,7 @@ export default function NavBar() {
 
   return (
     <>
-      <header className="bg-primary-black text-white block w-full z-40">
+      <div className="bg-primary-black text-white block w-full z-40">
         <div className="relative mx-auto flex items-center justify-between px-4 h-16">
           <NavLink to="/" className="flex-shrink-0 z-40">
             <img src="/images/navlogo.webp" alt="HegnXperten" className="h-8" />
@@ -34,19 +34,29 @@ export default function NavBar() {
 
           {/* Desktop nav */}
 
-          <nav className="hidden lg:flex lg:items-center lg:space-x-8">
-            {navItems.map(({ to, label }) => (
-              <NavLink
-                key={to}
-                to={to}
-                end
-                className={({ isActive }: NavLinkState) =>
-                  "font-medium pb-1 transition-colors "
-                }
-              >
-                {label}
-              </NavLink>
-            ))}
+          <nav className="hidden lg:flex lg:items-center lg:space-x-8 list-none">
+            <ul className="gap-5 flex  text-xl font-medium">
+              <li className="flex gap-5">
+                {navItems.map(({ to, label }) => (
+                  <NavLink
+                    to={to}
+                    end
+                    className={({ isActive }: NavLinkState) =>
+                      "transition-colors "
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                ))}
+
+                <ul className="gap-5 md:flex  opacity-30 ">
+                  <li className="cursor-not-allowed">Hegnstyper</li>
+                  <li className="cursor-not-allowed">Rydning</li>
+                  <li className="cursor-not-allowed">Hegnsloven</li>
+                  <li className="cursor-not-allowed">Kontakt os</li>
+                </ul>
+              </li>
+            </ul>
           </nav>
           <NavLink
             to="/getoffer"
@@ -55,7 +65,7 @@ export default function NavBar() {
             Indhent tilbud
           </NavLink>
         </div>
-      </header>
+      </div>
 
       {/* Mobile nav  */}
       <div
@@ -63,23 +73,29 @@ export default function NavBar() {
           menuOpen ? "scale-y-100" : "scale-y-0"
         }`}
       >
-        <ul className="mx-5 flex flex-col justify-around h-full space-y-6">
-          <div className=" flex flex-col justify-around">
+        <ul className="mx-5 flex flex-col justify-around h-full space-y-6 text-xl font-medium text-white">
+          <li>
             {navItems.map(({ to, label }) => (
-              <li key={to}>
-                <NavLink
-                  to={to}
-                  end
-                  onClick={() => setMenuOpen(false)}
-                  className={`text-white text-xl font-medium transform duration-300 my-5 ${
-                    menuOpen ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {label}
-                </NavLink>
-              </li>
+              <NavLink
+                to={to}
+                end
+                onClick={() => setMenuOpen(false)}
+                className={`text-white text-xl font-medium  my-5 ${
+                  menuOpen ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {label}
+              </NavLink>
             ))}
-          </div>
+
+            <ul className="gap-5 md:flex  opacity-30 ">
+              <li className="cursor-not-allowed">Hegnstyper</li>
+              <li className="cursor-not-allowed">Rydning</li>
+              <li className="cursor-not-allowed">Hegnsloven</li>
+              <li className="cursor-not-allowed">Kontakt os</li>
+            </ul>
+          </li>
+
           <li>
             <NavLink
               to="/getoffer"

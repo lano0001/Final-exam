@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Oswald";
+  src: url("./Oswald.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Raleway";
+  src: url("./Raleway.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

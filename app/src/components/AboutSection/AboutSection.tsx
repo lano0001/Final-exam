@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 const AboutSection: FC = () => {
   return (
     <section className="bg-primary-black text-white">
-      <div className="container mx-auto px-4 py-12 flex flex-col-reverse md:flex-row items-center gap-8">
+      <div className="container  px-6 py-12 flex flex-col-reverse md:flex-row items-center gap-8">
         <div className="w-full md:w-1/2">
           <h2 className="text-2xl md:text-4xl font-bold mb-4">
             Vi er HegnXperten
@@ -15,10 +15,10 @@ const AboutSection: FC = () => {
             et uforpligtende tilbud eller se vores pakkeløsninger.
           </p>
           <NavLink
-            to="/kontakt"
+            to="/getoffer"
             className="inline-block bg-accent-green transition-colors text-white font-semibold px-6 py-3 rounded-md"
           >
-            Kontakt os i dag
+            Få et tilbud
           </NavLink>
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function Footer() {
             Klar til at få et tilbud?
           </div>
           <NavLink to="/getoffer">
-            <button className="bg-accent-green hover:bg-green-700 text-white px-4 py-2 rounded">
+            <button className="bg-accent-green hover:bg-green-700 text-white px-4 py-2 rounded cursor-pointer">
               Indhent tilbud
             </button>
           </NavLink>

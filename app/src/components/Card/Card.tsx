@@ -1,16 +1,17 @@
 import React from "react";
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 
 interface CardProps {
   text: string;
-  icon: string;
+
+  children?: ReactNode;
 }
 
-const Card: FC<CardProps> = ({ text, icon }) => {
+const Card: FC<CardProps> = ({ text, children }) => {
   return (
-    <div className="bg-primary-black shadow-lg shadow-primary-black rounded-lg flex flex-col md:flex-row items-center justify-around text-white p-4 gap-4 h-32">
-      <img src={icon} alt="" className="h-7 w-7 md:h-auto md:w-auto" />
-      <span className="text-xs sm:text-lg">{text}</span>
+    <div className="bg-primary-black text-center shadow-lg shadow-primary-black rounded-lg flex flex-col items-center justify-around text-white p-4 gap-4 md:h-32 md:w-90">
+      <p className="text-md sm:text-lg">{text}</p>
+      {children}
     </div>
   );
 };
