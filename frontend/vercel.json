@@ -1,14 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": ".react-router/server/index.js"
+      "source": "/(.*)",
+      "destination": ".react-router/server/index.js"
     }
   ]
 }
