@@ -3,7 +3,9 @@
     "**/*",
     "**/.server/**/*",
     "**/.client/**/*",
-    "frontend/.react-router/types/**/*"
+    "frontend/.react-router/types/**/*",
+    "vite-env.d.ts",
+    "src"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
