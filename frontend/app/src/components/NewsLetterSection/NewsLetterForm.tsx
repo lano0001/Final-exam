@@ -38,7 +38,7 @@ export default function NewsletterForm() {
     <form onSubmit={subscribe} className="space-y-4 max-w-sm mx-auto">
       <input
         type="email"
-        placeholder="Enter your email"
+        placeholder="Skriv din e-mail"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -49,13 +49,13 @@ export default function NewsletterForm() {
         disabled={loading}
         className="bg-accent-green text-white px-4 py-2 rounded  hover:bg-blue-700 disabled:opacity-50"
       >
-        {loading ? "Subscribing..." : "Subscribe"}
+        {loading ? "Tilmelder..." : "Tilmeld"}
       </button>
       {status === "success" && (
-        <p className="text-green-600">Subscribed successfully!</p>
+        <p className="text-green-600">Du er nu tilmeldt!</p>
       )}
       {status === "error" && (
-        <p className="text-red-600">Something went wrong. Try again.</p>
+        <p className="text-red-600">Noget gik galt, prøv igen.</p>
       )}
     </form>
   );
