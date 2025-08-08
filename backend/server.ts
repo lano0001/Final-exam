@@ -11,7 +11,7 @@ const app = express();
 // ✅ Allow CORS from Vercel frontend + localhost
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://final-exam-vh4f.vercel.app", // replace with your actual Vercel URL
+  "https://final-exam-nnt1.vercel.app", // replace with your actual Vercel URL
 ];
 app.use(
   cors({
