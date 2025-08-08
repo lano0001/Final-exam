@@ -7,7 +7,18 @@ import { fetch } from "undici";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// ✅ Allow CORS from Vercel frontend + localhost
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://final-exam-vh4f.vercel.app", // replace with your actual Vercel URL
+];
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
+
 app.use(express.json());
 
 app.post("/api/subscribe", async (req, res) => {
@@ -19,13 +30,13 @@ app.post("/api/subscribe", async (req, res) => {
 
   const API_KEY = process.env.MAILCHIMP_API_KEY!;
   const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID!;
-  const DATACENTER = API_KEY.split("-")[1]; // e.g., "us21"
+  const DATACENTER = API_KEY.split("-")[1];
 
   const mailchimpUrl = `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`;
 
   const data = {
     email_address: email,
-    status: "subscribed", // direct subscription, no confirmation email from Mailchimp
+    status: "subscribed",
   };
 
   try {
@@ -48,19 +59,16 @@ app.post("/api/subscribe", async (req, res) => {
     return res.status(200).json({ message: "Subscribed successfully" });
   } catch (error) {
     console.error("Server error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
+});
+
+// ✅ Optional: health check route
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running on Render");
 });
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
-
-console.log("Mailchimp Key:", process.env.MAILCHIMP_API_KEY);
-console.log("Audience ID:", process.env.MAILCHIMP_AUDIENCE_ID);
-console.log("he");
-
-app.get("/", (req, res) => {
-  res.send("Server is running 🚀");
 });

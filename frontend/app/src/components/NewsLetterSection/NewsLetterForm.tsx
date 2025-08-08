@@ -12,11 +12,14 @@ export default function NewsletterForm() {
     setStatus(null);
 
     try {
-      const res = await fetch("http://localhost:4000/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const res = await fetch(
+        "https://final-exam-cwpd.onrender.com/api/subscribe",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       if (res.ok) {
         setStatus("success");
