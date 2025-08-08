@@ -48,15 +48,35 @@ export default function GetOfferForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const isValidNumber = (value: string) => {
+    const trimmed = value.trim();
+    return trimmed !== "" && !isNaN(Number(trimmed));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Handles validation
     const newErrors: { [key in keyof FormData]?: boolean } = {};
     let isValid = true;
 
     for (const key in formData) {
-      if (formData[key as keyof FormData].trim() === "") {
+      const value = formData[key as keyof FormData]?.trim();
+
+      if (!value) {
+        newErrors[key as keyof FormData] = true;
+        isValid = false;
+      }
+
+      // Validate number fields
+      if (
+        ["laengde", "hoejde", "antalHjorner", "antalEnder"].includes(key) &&
+        !isValidNumber(value!)
+      ) {
+        newErrors[key as keyof FormData] = true;
+        isValid = false;
+      }
+
+      if (key === "antalLaager" && value && !isValidNumber(value)) {
         newErrors[key as keyof FormData] = true;
         isValid = false;
       }
@@ -65,30 +85,32 @@ export default function GetOfferForm() {
     setErrors(newErrors);
 
     if (!isValid) {
+      alert("Udfyld venligst alle felter korrekt.");
       return;
     }
 
-    const { error } = await supabase.from("quotes").insert([
-      {
-        navn: formData.navn,
-        email: formData.email,
-        adresse: formData.adresse,
-        postnr: formData.postnr,
-        telefon: formData.telefon,
-        hegnstype: formData.hegnstype,
-        emne: formData.emne,
-        laengde_m: formData.laengde,
-        hoejde_cm: formData.hoejde,
-        antal_hjorner: parseInt(formData.antalHjorner),
-        antal_ender: parseInt(formData.antalEnder),
-        antal_laager: formData.antalLaager
-          ? parseInt(formData.antalLaager)
-          : null,
-        bemarkning: formData.bemarkning,
-      },
-    ]);
+    const payload = {
+      navn: formData.navn.trim(),
+      email: formData.email.trim(),
+      adresse: formData.adresse.trim(),
+      postnr: formData.postnr.trim(),
+      telefon: formData.telefon.trim(),
+      hegnstype: formData.hegnstype.trim(),
+      emne: formData.emne.trim(),
+      laengde_m: parseFloat(formData.laengde.trim()),
+      hoejde_cm: parseFloat(formData.hoejde.trim()),
+      antal_hjorner: parseInt(formData.antalHjorner.trim()),
+      antal_ender: parseInt(formData.antalEnder.trim()),
+      antal_laager: formData.antalLaager.trim()
+        ? parseInt(formData.antalLaager.trim())
+        : null,
+      bemarkning: formData.bemarkning.trim(),
+    };
 
-    // Error Message
+    console.log("Submitting payload:", payload);
+
+    const { error } = await supabase.from("quotes").insert([payload]);
+
     if (error) {
       console.error("Supabase insert error:", error.message);
       alert("Der opstod en fejl. Prøv igen.");
@@ -97,7 +119,6 @@ export default function GetOfferForm() {
 
     alert("Tak! Dit tilbud er sendt.");
 
-    // Resets form
     setFormData({
       navn: "",
       email: "",
@@ -124,7 +145,7 @@ export default function GetOfferForm() {
         onSubmit={handleSubmit}
         className="bg-primary-black p-6 md:p-10 rounded-lg w-full max-w-4xl shadow-lg shadow-primary-black"
       >
-        <h2 className="text-center  md:text-2xl mb-6 text-white">
+        <h2 className="text-center md:text-2xl mb-6 text-white">
           Indhent tilbud på dit næste hegnprojekt
         </h2>
 
@@ -180,14 +201,14 @@ export default function GetOfferForm() {
           />
           <TextInput
             name="laengde"
-            placeholder="laengde i meter"
+            placeholder="Længde i meter"
             value={formData.laengde}
             onChange={handleChange}
             error={errors.laengde}
           />
           <TextInput
             name="hoejde"
-            placeholder="Hoejde i cm."
+            placeholder="Højde i cm."
             value={formData.hoejde}
             onChange={handleChange}
             error={errors.hoejde}
@@ -218,7 +239,7 @@ export default function GetOfferForm() {
         <div className="mt-4">
           <TextArea
             name="bemarkning"
-            placeholder="Bemarkning"
+            placeholder="Bemærkning"
             value={formData.bemarkning}
             onChange={handleChange}
           />
