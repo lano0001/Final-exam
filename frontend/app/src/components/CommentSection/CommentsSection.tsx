@@ -43,7 +43,7 @@ export default function CommentsCarousel() {
         .order("created_at", { ascending: false });
 
       if (error) {
-        console.error("Error fetching comments:", error.message);
+        console.error("Error fetching comments", error.message);
       } else {
         setComments(data || []);
       }
