@@ -17,7 +17,7 @@ const TextArea: React.FC<TextAreaProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={`p-1  w-full h-24 resize-none bg-white text-black focus:outline-none`}
+      className={`p-1 text-sm md:text-lg w-full h-24 resize-none bg-white text-black focus:outline-none`}
     ></textarea>
   );
 };

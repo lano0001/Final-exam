@@ -22,7 +22,7 @@ const TextInput: React.FC<TextInputProps> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={`bg-white focus:outline-none p-1 ${
+      className={`bg-white text-sm md:text-lg focus:outline-none p-1 ${
         error ? "border border-red-500" : ""
       }`}
     />

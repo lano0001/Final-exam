@@ -8,13 +8,7 @@ interface NavLinkState {
   isActive: boolean;
 }
 
-const navItems = [
-  // { to: "/about", label: "Hegnstyper" },
-  // { to: "/about", label: "Rydning" },
-  // { to: "/about", label: "Hegnsloven" },
-  { to: "/about", label: "Om os" },
-  // { to: "/about", label: "Kontakt os" },
-];
+const navItems = [{ to: "/about", label: "Om os" }];
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,7 +44,7 @@ export default function NavBar() {
                   </NavLink>
                 ))}
 
-                <ul className="gap-5 md:flex  opacity-30 ">
+                <ul className="gap-5 md:flex opacity-30">
                   <li className="cursor-not-allowed">Hegnstyper</li>
                   <li className="cursor-not-allowed">Rydning</li>
                   <li className="cursor-not-allowed">Hegnsloven</li>
@@ -82,7 +76,7 @@ export default function NavBar() {
                 to={to}
                 end
                 onClick={() => setMenuOpen(false)}
-                className={`text-white text-xl font-medium  my-5 ${
+                className={`text-white text-xl font-medium my-5 ${
                   menuOpen ? "opacity-100" : "opacity-0"
                 }`}
               >
@@ -90,7 +84,7 @@ export default function NavBar() {
               </NavLink>
             ))}
 
-            <ul className="gap-5 md:flex  opacity-30 ">
+            <ul className="gap-5 opacity-30">
               <li className="cursor-not-allowed">Hegnstyper</li>
               <li className="cursor-not-allowed">Rydning</li>
               <li className="cursor-not-allowed">Hegnsloven</li>

@@ -87,7 +87,7 @@ export default function CommentsCarousel() {
       <button
         onClick={prev}
         disabled={currentIdx === 0}
-        className="absolute cursor-pointer left-1 md:left-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
+        className="absolute cursor-pointer -left-1 md:left-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-2xl md:text-3xl disabled:opacity-30"
         aria-label="Previous"
       >
         <FaAngleLeft />
@@ -124,7 +124,7 @@ export default function CommentsCarousel() {
       <button
         onClick={next}
         disabled={currentIdx >= slides.length - 1}
-        className="absolute cursor-pointer right-1 md:right-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-3xl disabled:opacity-30"
+        className="absolute cursor-pointer -right-1 md:right-4 top-1/2 z-10 transform -translate-y-1/2 text-white text-2xl md:text-3xl disabled:opacity-30"
         aria-label="Next"
       >
         <FaAngleRight />

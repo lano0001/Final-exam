@@ -139,13 +139,13 @@ export default function GetOfferForm() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-around px-4 py-8 ">
-      <h2 className="text-3xl md:text-5xl font-semibold my-10">Få et tilbud</h2>
+      <h2 className="text-4xl md:text-5xl font-semibold my-10">Få et tilbud</h2>
 
       <form
         onSubmit={handleSubmit}
         className="bg-primary-black p-6 md:p-10 rounded-lg w-full max-w-4xl shadow-lg shadow-primary-black"
       >
-        <h2 className="text-center md:text-2xl mb-6 text-white">
+        <h2 className="text-center text-2xl md:text-3xl mb-6 text-white">
           Indhent tilbud på dit næste hegnprojekt
         </h2>
 
